@@ -323,19 +323,19 @@ function getLimitedLinksMetadata (limitedLinks) {
 }
 
 function addAdditionalClasses (linksContainer, classes) {
-  Object.keys(classes).forEach(selector => {
+  Array.prototype.slice.call(Object.keys(classes)).forEach(selector => {
     if (selector === 'ul') {
       const selectorValue = classes['ul']
       if (Array.isArray(selectorValue)) {
-        selectorValue.forEach(c => linksContainer.classList.add(c))
+        Array.prototype.slice.call(selectorValue).forEach(c => linksContainer.classList.add(c))
       } else {
         linksContainer.classList.add(selectorValue)
       }
     }
-    linksContainer.querySelectorAll(selector).forEach(node => {
+    Array.prototype.slice.call(linksContainer.querySelectorAll(selector)).forEach(node => {
       const selectorValue = classes[selector]
       if (Array.isArray(selectorValue)) {
-        selectorValue.forEach(c => node.classList.add(c))
+        Array.prototype.slice.call(selectorValue).forEach(c => node.classList.add(c))
       } else {
         node.classList.add(selectorValue)
       }

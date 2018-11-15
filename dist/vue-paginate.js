@@ -531,19 +531,19 @@
   }
 
   function addAdditionalClasses (linksContainer, classes) {
-    Object.keys(classes).forEach(function (selector) {
+    Array.prototype.slice.call(Object.keys(classes)).forEach(function (selector) {
       if (selector === 'ul') {
         var selectorValue = classes['ul']
         if (Array.isArray(selectorValue)) {
-          selectorValue.forEach(function (c) { return linksContainer.classList.add(c); })
+          Array.prototype.slice.call(selectorValue).forEach(function (c) { return linksContainer.classList.add(c); })
         } else {
           linksContainer.classList.add(selectorValue)
         }
       }
-      linksContainer.querySelectorAll(selector).forEach(function (node) {
+      Array.prototype.slice.call(linksContainer.querySelectorAll(selector)).forEach(function (node) {
         var selectorValue = classes[selector]
         if (Array.isArray(selectorValue)) {
-          selectorValue.forEach(function (c) { return node.classList.add(c); })
+          Array.prototype.slice.call(selectorValue).forEach(function (c) { return node.classList.add(c); })
         } else {
           node.classList.add(selectorValue)
         }
